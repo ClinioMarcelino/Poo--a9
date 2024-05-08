@@ -1,38 +1,36 @@
 package m;
 
-public class RunWalk extends Exercise{
-	float  distance;
-	float duration;
+import java.util.Date;
 
-	
-	public RunWalk(float distance, float duration) {
+public class RunWalk extends Exercise {
+	private double distance;
+
+	public RunWalk(String name, Date date, double duration, String comment, double distance) {
+		super(name, date, duration, comment);
 		setDistance(distance);
-		setDuration(duration);
-		setCalories(distance, duration);
 	}
 	
-	
-	
-	
-	public void setCalories(float distance, float duration) {
-		super.setCalories((distance/duration) * 900);
+	public double getDistance() {
+		return this.distance;
 	}
 
-	public float getDistance() {
-		return distance;
-	}
-
-	public void setDistance(float distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
 
-	public float getDuration() {
-		return duration;
+	@Override
+	public String toStringCustomInfo() {
+		return getDistance()+"";
 	}
 
-	public void setDuration(float duration) {
-		this.duration = duration;
+	@Override
+	public String getType() {
+		return "Run Walk";
 	}
-		
+
+	@Override
+	public double getCaloriesBurned() {
+		return (getDistance() / super.getDuration()) * 9000;
+	}
+
 }
-
